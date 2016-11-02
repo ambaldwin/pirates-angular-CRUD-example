@@ -1,0 +1,59 @@
+<div class="container-fluid">
+
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset">
+      <button type="button" class="btn btn-default navbar-btn" ng-click="showme = !showme">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Pirate
+      </button>
+    </div>
+
+<!-- hidden and unhidden add pirate form -->
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset">
+  <form ng-show="showme" name="pirateForm" ng-submit="addPirate(pirate)">
+    <div class="form-group" ng-class="{'has-error': pirateForm.title.$invalid && !pirateForm.title.$pristine, 'has-success': pirateForm.title.$valid}">
+        <label class="control-label" for="name">Name</label>
+        <input class="form-control" type="text" name="name" ng-model="pirate.name" ng-minlength="3" ng-maxlength="15" ng-required="true">
+        <small class="help-block" ng-show="pirateForm.name.$error.minlength">Name is too short</small>
+        <small class="help-block" ng-show="pirateForm.name.$error.maxlength">Name is too long</small>
+    </div>
+    <div class="form-group" ng-class="{'has-error': pirateForm.poison.$invalid && !pirateForm.poison.$pristine, 'has-success': pirateForm.poison.$valid}">
+        <label class="control-label" for="poison">Pick yer Poison</label>
+        <input class="form-control" type="text" name="poison" ng-model="pirate.poison" ng-minlength="3" ng-maxlength="12" ng-required="true">
+        <small class="help-block" ng-show="pirateForm.poison.$error.minlength">Poison is too short</small>
+        <small class="help-block" ng-show="pirateForm.poison.$error.maxlength">Poison is too long</small>
+    </div>
+    <div class="form-group" ng-class="{'has-error': pirateForm.image.$invalid && !pirateForm.image.$pristine, 'has-success': pirateForm.image.$valid}">
+        <label class="control-label" for="image">Image URL</label>
+        <input class="form-control" type="text" name="image" ng-model="pirate.image" ng-required="true">
+        <small class="help-block" ng-show="pirateForm.image.$error.email">Enter a valid Image URL</small>
+    </div>
+    <div class="form-group" ng-class="{'has-error': pirateForm.accessory.$invalid && !pirateForm.accessory.$pristine, 'has-success': pirateForm.accessory.$valid}">
+        <label class="control-label" for="accessory">Accessory</label>
+        <input class="form-control" type="text" name="accessory" ng-model="pirate.accessory" ng-required="true">
+        <small class="help-block" ng-show="pirateForm.accessory.$invalid && !pirateForm.accessory.$pristine">Enter a valid accessory!</small>
+    </div>
+    <button name="button" ng-disabled="pirateForm.$invalid" ng-click="showme=false">Submit</button>
+  </form>
+  <br>
+</div>
+
+
+<!-- pirates -->
+    <div ng-repeat="pirates in view.pirates">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left">
+                        <img ng-class="image" ng-src="{{pirates.image}}">
+                    </div>
+                    <div class="media-body">
+                        <h2>{{pirates.name}}</h2>
+                        <br>
+                        <p><strong>Poison:</strong> {{pirates.poison}}</p>
+                        <br>
+                        <p><strong>Notable Accessory:</strong> {{pirates.accessory}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
