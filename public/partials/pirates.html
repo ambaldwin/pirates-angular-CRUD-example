@@ -11,13 +11,13 @@
   <form ng-show="showme" name="pirateForm" ng-submit="addPirate(pirate)">
     <div class="form-group" ng-class="{'has-error': pirateForm.title.$invalid && !pirateForm.title.$pristine, 'has-success': pirateForm.title.$valid}">
         <label class="control-label" for="name">Name</label>
-        <input class="form-control" type="text" name="name" ng-model="pirate.name" ng-minlength="3" ng-maxlength="15" ng-required="true">
+        <input class="form-control" type="text" name="name" ng-model="pirate.name" ng-minlength="3" ng-maxlength="20" ng-required="true">
         <small class="help-block" ng-show="pirateForm.name.$error.minlength">Name is too short</small>
         <small class="help-block" ng-show="pirateForm.name.$error.maxlength">Name is too long</small>
     </div>
     <div class="form-group" ng-class="{'has-error': pirateForm.poison.$invalid && !pirateForm.poison.$pristine, 'has-success': pirateForm.poison.$valid}">
         <label class="control-label" for="poison">Pick yer Poison</label>
-        <input class="form-control" type="text" name="poison" ng-model="pirate.poison" ng-minlength="3" ng-maxlength="12" ng-required="true">
+        <input class="form-control" type="text" name="poison" ng-model="pirate.poison" ng-minlength="3" ng-maxlength="20" ng-required="true">
         <small class="help-block" ng-show="pirateForm.poison.$error.minlength">Poison is too short</small>
         <small class="help-block" ng-show="pirateForm.poison.$error.maxlength">Poison is too long</small>
     </div>
