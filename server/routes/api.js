@@ -4,16 +4,21 @@ var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log('pirates route');
   knex('pirates').then((pirates)=> {
     res.json(pirates)
   })
 });
 
 router.get('/:id', (req, res, next) => {
-  knex('pirates').where('pirates.id', req.params.id).first()
-  .then((pirate) => {
-    res.json(pirate);
-  })
+  console.log('pirates/:id route', req.params.id);
+  if (Number.parseInt(req.params.id)){
+    knex('pirates').where('pirates.id', req.params.id).first()
+    .then((pirate) => {
+      res.json(pirate);
+    })
+  }
+
 });
 
 router.post('/', (req, res, next) => {

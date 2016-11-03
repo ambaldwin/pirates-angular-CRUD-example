@@ -8,8 +8,7 @@ app.factory('PiratesService', function ($http) {
       return $http.post('/api/pirates', pirate);
     },
     one: function(pirates) {
-      console.log('pirates.id from services page:', pirates);
-      return $http.get('/api/pirates', pirates);
+      return $http.get('/api/pirates/' + pirates);
     }
   }
 })
