@@ -46,7 +46,9 @@
                         <img ng-class="image" ng-src="{{pirates.image}}">
                     </div>
                     <div class="media-body">
-                        <h2>{{pirates.name}}</h2>
+                        <a href="/#/pirate/{{pirates.id}}">
+                          <h2>{{pirates.name}}</h2>
+                        </a>
                         <br>
                         <p><strong>Poison:</strong> {{pirates.poison}}</p>
                         <br>

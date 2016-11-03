@@ -9,6 +9,13 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', (req, res, next) => {
+  knex('pirates').where('pirates.id', req.params.id).first()
+  .then((pirate) => {
+    res.json(pirate);
+  })
+});
+
 router.post('/', (req, res, next) => {
   let newPirate = {
     name: req.body.name,
