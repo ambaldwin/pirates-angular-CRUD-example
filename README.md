@@ -7,6 +7,6 @@ A basic CRUD app example using the NEAP stack - Node, Express, Angular, PostgreS
 
 ![screen shot 2016-12-06 at 2 53 43 pm](https://cloud.githubusercontent.com/assets/18018191/20945341/170f8c6c-bbc4-11e6-99bf-b594f8a65add.png)
 
-2. Users can click into each individual pirate (the pirates' names are links) to go to the pirate's individual page. Here, users can edit the post and also delete the post.
+2. Users can click into each individual pirate (the pirates' names are links) to go to the pirate's individual page. Here, users can click the edit button (the edit form pops up) to edit the post and also delete the post.
 
 ![screen shot 2016-12-06 at 2 54 15 pm](https://cloud.githubusercontent.com/assets/18018191/20945396/5967f432-bbc4-11e6-876d-d148c2f7bd71.png)
