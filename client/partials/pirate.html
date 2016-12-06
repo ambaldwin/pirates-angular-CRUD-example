@@ -4,15 +4,48 @@
     <div class="panel-body">
         <div class="media">
             <div class="media-left">
-                <img ng-class="image" ng-src="{{pirates.image}}">
+                <img ng-class="image" ng-src="{{pirate.image}}">
             </div>
             <div class="media-body">
-                  <h2>{{pirates.name}}</h2>
+                <h2>{{pirate.name}}</h2>
                 <br>
-                <p><strong>Poison:</strong> {{pirates.poison}}</p>
+                <p><strong>Poison:</strong> {{pirate.poison}}</p>
                 <br>
-                <p><strong>Notable Accessory:</strong> {{pirates.accessory}}</p>
+                <p><strong>Notable Accessory:</strong> {{pirate.accessory}}</p>
             </div>
         </div>
+        <div class="pull-right">
+            <a  ng-click="showEditForm = !showEditForm">EDIT  | </a>
+            <a href="" ng-click="deletePirate(pirate)">  DELETE the MATEY</a>
+        </div>
     </div>
+
+
+<br>
+<form ng-show="showEditForm" name="editPirate">
+      <input type="text" name="name" value="{{pirate.id}}" hidden>
+      <div class="form-group" ng-class="{'has-error': showEditForm.title.$invalid && !showEditForm.title.$pristine, 'has-success': showEditForm.title.$valid}">
+          <label class="control-label" for="name">Name</label>
+          <input class="form-control" type="text" name="name" value="{{pirate.name}}" ng-model="pirate.name" ng-minlength="3" ng-maxlength="20" ng-required="true">
+          <small class="help-block" ng-show="showEditForm.name.$error.minlength">Name is too short</small>
+          <small class="help-block" ng-show="showEditForm.name.$error.maxlength">Name is too long</small>
+      </div>
+      <div class="form-group" ng-class="{'has-error': showEditForm.poison.$invalid && !showEditForm.poison.$pristine, 'has-success': showEditForm.poison.$valid}">
+          <label class="control-label" for="poison">Pick yer Poison</label>
+          <input class="form-control" type="text" name="poison" value="{{pirate.poison}}" ng-model="pirate.poison" ng-minlength="3" ng-maxlength="20" ng-required="true">
+          <small class="help-block" ng-show="showEditForm.poison.$error.minlength">Poison is too short</small>
+          <small class="help-block" ng-show="showEditForm.poison.$error.maxlength">Poison is too long</small>
+      </div>
+      <div class="form-group" ng-class="{'has-error': showEditForm.image.$invalid && !showEditForm.image.$pristine, 'has-success': showEditForm.image.$valid}">
+          <label class="control-label" for="image">Image URL</label>
+          <input class="form-control" type="text" name="image" value="{{pirate.image}}" ng-model="pirate.image" ng-required="true">
+          <small class="help-block" ng-show="showEditForm.image.$error.email">Enter a valid Image URL</small>
+      </div>
+      <div class="form-group" ng-class="{'has-error': showEditForm.accessory.$invalid && !showEditForm.accessory.$pristine, 'has-success': showEditForm.accessory.$valid}">
+          <label class="control-label" for="accessory">Accessory</label>
+          <input class="form-control" type="text" name="accessory" value="{{pirate.accessory}}" ng-model="pirate.accessory" ng-required="true">
+          <small class="help-block" ng-show="showEditForm.accessory.$invalid && !showEditForm.accessory.$pristine">Enter a valid accessory!</small>
+      </div>
+      <button class="btn btn-default" ng-disabled="editPirate.$invalid" ng-click="showEditForm=false; submitEditPirate(pirate)">Save Changes</button>
+    </form>
 </div>
